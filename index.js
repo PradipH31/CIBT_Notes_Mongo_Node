@@ -5,7 +5,7 @@ var mongo = mongoose.createConnection('mongodb://localhost/cibt_project', { useN
 var Schema = mongoose.Schema;
 
 var customerSchema = new Schema({
-    _id: mongoose.Types.ObjectId(),
+    _id: mongoose.Types.ObjectId,
     firstName: String,
     lastName: String,
     email: String,
@@ -15,4 +15,20 @@ var customerSchema = new Schema({
     status: Boolean
 });
 
-var Customer = mongoose.model('Customer', customerSchema, "customers");
+var Customer = mongo.model('Customer', customerSchema, "customers");
+
+var customer = new Customer({
+    _id: mongoose.Types.ObjectId(),
+    firstName: 'Rabin',
+    lastName: 'Dhoju',
+    email: 'rabin@gmail.com',
+    contactNo: '12124314',
+    createdDate: new Date(),
+    status: true
+});
+customer.save((err) => {
+    if (err) {
+        console.log('err');
+    }
+    console.log('Saved successfully');
+});
