@@ -14,3 +14,5 @@ var customerSchema = new Schema({
     modifiedDate: Date,
     status: Boolean
 });
+
+var Customer = mongoose.model('Customer', customerSchema, "customers");
