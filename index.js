@@ -17,22 +17,8 @@ var customerSchema = new Schema({
 
 var Customer = mongo.model('Customer', customerSchema, "customers");
 
-var customer = new Customer({
-    _id: mongoose.Types.ObjectId(),
-    firstName: 'Aakash',
-    lastName: 'Karki',
-    email: 'akash@gmail.com',
-    contactNo: '12124314',
-    createdDate: new Date(),
-    status: true
-});
-
-customer.save((err) => {
-    if (err) {
-        console.log('err');
-    }
-    console.log('Saved successfully')
-});
-Customer.find({}, (err, res) => {
-    console.log(res);
+Customer.find({ firstName: 'Rabin' }, (err, rows) => {
+    rows.forEach((row, index) => {
+        console.log(row);
+    })
 });
