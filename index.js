@@ -15,20 +15,8 @@ var customerSchema = new Schema({
     status: Boolean
 });
 
-customerSchema.query.byEmail = function(email) {
-    return this.where({ email: new RegExp(email, 'i') });
-}
-
-customerSchema.query.byStatus = function(status) {
-    return this.where({ status: status });
-}
-
 var Customer = mongo.model('Customer', customerSchema, "customers");
 
-Customer.find().byEmail('b').exec(function(err, rows) {
+Customer.find({}, function(err, rows) {
     console.log(rows);
-});
-
-Customer.find().byStatus(true).exec(function(err, rows) {
-    console.log(rows);
-});
+}).limit(1).sort({ firstName: 1 });
