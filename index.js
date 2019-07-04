@@ -17,6 +17,6 @@ var customerSchema = new Schema({
 
 var Customer = mongo.model('Customer', customerSchema, "customers");
 
-Customer.findOne({ status: true }, function(err, row) {
+Customer.findById('5d1ce7a4e04c5a3c3836123e', (err, row) => {
     console.log(row);
 });
