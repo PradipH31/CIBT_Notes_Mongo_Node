@@ -1,27 +1,20 @@
 var mongoose = require('mongoose');
 
-var mongo = mongoose.createConnection('mongodb://localhost/cibt_project', { useNewUrlParser: true });
+var Customer = require('./models/customer')
 
-var Schema = mongoose.Schema;
-
-var customerSchema = new Schema({
-    _id: mongoose.Types.ObjectId,
-    firstName: String,
-    lastName: String,
-    email: String,
-    contactNo: String,
-    createdDate: Date,
-    modifiedDate: Date,
-    status: Boolean
+var customer = new Customer({
+    _id: mongoose.Types.ObjectId(),
+    firstName: 'Manjit',
+    lastName: 'Shakya',
+    email: 'mnzit@gmail.com',
+    contactNo: '8392457893',
+    createdDate: new Date(),
+    status: false
 });
 
-var Customer = mongo.model('Customer', customerSchema, "customers");
-
-Customer.updateMany({ status: false }, {
-    $set: {
-        status: true,
-        modifiedDate: new Date()
+customer.save(function(err) {
+    if (err) {
+        console.log('er');
     }
-}, function(err, raw) {
-    console.log(raw);
+    console.log('Saved')
 });
