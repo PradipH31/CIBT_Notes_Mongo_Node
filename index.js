@@ -17,6 +17,6 @@ var customerSchema = new Schema({
 
 var Customer = mongo.model('Customer', customerSchema, "customers");
 
-Customer.find({}, function(err, rows) {
-    console.log(rows);
-}).limit(1).sort({ firstName: 1 });
+Customer.findOne({ status: true }, function(err, row) {
+    console.log(row);
+});
