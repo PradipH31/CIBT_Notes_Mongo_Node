@@ -19,6 +19,12 @@ app.get('/', function(req, res) {
     });
 });
 
+app.get('/customers/:id', function(req, res) {
+    Customer.findOne({ _id: req.params.id }, function(err, row) {
+        res.send(row);
+    });
+});
+
 app.post('/', function(req, res) {
     var customer = new Customer({
         _id: mongoose.Types.ObjectId(),
@@ -29,7 +35,7 @@ app.post('/', function(req, res) {
         createdDate: new Date(),
         status: (req.body.status !== null)
     });
-    customer.save(function (err) {
+    customer.save(function(err) {
         if (!err) {
             res.redirect('/');
         }

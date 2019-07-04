@@ -4,6 +4,7 @@
         <th>Email</th>
         <th>Contact No</th>
         <th>Status</th>
+        <th>Detail</th>
     </thead>
     <tbody>
         <% customers.forEach((c,i)=>{ %>
@@ -20,6 +21,9 @@
                 </td>
                 <td>
                     <%=c.status%>
+                </td>
+                <td>
+                    <a href="/customers/<%=c.id%>">Detail</a>
                 </td>
             </tr>
             <% }); %>
