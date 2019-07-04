@@ -1,0 +1,27 @@
+<table border="1">
+    <thead>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Contact No</th>
+        <th>Status</th>
+    </thead>
+    <tbody>
+        <% customers.forEach((c,i)=>{ %>
+            <tr>
+                <td>
+                    <%=c.firstName%>
+                        <%=c.lastName%>
+                </td>
+                <td>
+                    <%=c.email%>
+                </td>
+                <td>
+                    <%=c.contactNo%>
+                </td>
+                <td>
+                    <%=c.status%>
+                </td>
+            </tr>
+            <% }); %>
+    </tbody>
+</table>
